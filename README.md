@@ -1,1 +1,1 @@
-# mc-tekxit-docker
+# mc-tekxit-docker - Tekxit modpack in Docker
