@@ -1,0 +1,16 @@
+version: '3'
+services:
+  tekxit:
+    build:
+      context: .
+    environment:
+      - URL="https://www.tekxit.xyz/downloads/1.0.6TekxitPiServer.zip"
+      - MEM="12G"
+    ports:
+      - 25565:25565
+    volumes:
+      - "minecraft_data:/minecraft/1.0.6TekxitPiServer"
+    restart: unless-stopped
+
+volumes:
+  minecraft_data:
