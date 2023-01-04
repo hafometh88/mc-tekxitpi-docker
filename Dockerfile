@@ -2,7 +2,6 @@ FROM openjdk:8-jre-alpine
 
 ENV URL="https://www.tekxit.xyz/downloads/1.0.7.1TekxitPiServer.zip"
 ENV MEM="8G"
-ENV PORT="25565"
 
 RUN apk add unzip
 RUN apk add wget
@@ -14,7 +13,7 @@ RUN mv /minecraft/
 
 RUN chmod +x /minecraft/1.0.6TekxitPiServer/ServerLinux.sh
 
-EXPOSE ${PORT}
+EXPOSE 25565
 
 WORKDIR /minecraft/1.0.6TekxitPiServer
 #RUN echo "java -server -Xmx${MEM} -Xms${MEM} -jar forge-1.12.2-14.23.5.2854.jar nogui" > ServerLinux.sh
