@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-ENV VERSION="1.0.7.1"
+ENV VERSION="1.0.950"
 ENV URL="https://www.tekxit.xyz/downloads/${VERSION}TekxitPiServer.zip"
 ENV MEM="4G"
 
