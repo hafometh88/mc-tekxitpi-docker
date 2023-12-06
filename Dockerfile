@@ -1,22 +1,18 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jre-slim
 
-ENV VERSION="1.0.961"
-ENV URL="https://www.tekxit.lol/downloads/tekxit3.14/${VERSION}TekxitPiServer.zip"
+ENV VER="1.0.961"
 ENV MEM="4G"
 
-RUN apk add unzip
-RUN apk add wget
+RUN apt-get update && \
+    apt-get install -y unzip && \
+    apt-get install -y wget
 
-RUN wget -O /tmp/tekkit.zip ${URL}
-RUN unzip /tmp/tekkit.zip -d /minecraft/
-
-RUN mv /minecraft/* /minecraft/tekxit
-RUN chmod +x /minecraft/tekxit/ServerLinux.sh
+COPY start.sh /minecraft/
+RUN chmod +x /minecraft/start.sh
 
 EXPOSE 25565
 
-WORKDIR /minecraft/tekxit
-RUN sed -i 's/Xmx4G/Xmx${MEM}/g' ServerLinux.sh
-RUN sed -i 's/Xms4G/Xms${MEM}/g' ServerLinux.sh
+CMD /minecraft/start.sh
 
-CMD /minecraft/tekxit/ServerLinux.sh
+
+
