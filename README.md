@@ -19,7 +19,7 @@ services:
     ports:
       - 25565:25565
     volumes:
-      - "minecraft_data:/minecraft/tekxit"
+      - "minecraft_data:/minecraft"
     restart: unless-stopped
 
 volumes:
