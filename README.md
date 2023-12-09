@@ -14,7 +14,7 @@ services:
   tekxit:
     image: ghcr.io/hafometh88/mc-tekxit-docker:latest
     environment:
-      - VERSION:"1.0.961"
+      - VER:"1.0.961"
       - MEM:"4G"
     ports:
       - 25565:25565
