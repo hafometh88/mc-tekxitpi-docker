@@ -13,6 +13,3 @@ RUN chmod +x /minecraft/start.sh
 EXPOSE 25565
 
 CMD /minecraft/start.sh
-
-
-

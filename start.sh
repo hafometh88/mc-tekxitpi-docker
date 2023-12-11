@@ -9,7 +9,12 @@ else
     unzip ./${VER}TekxitPiServer.zip
 fi
 cd ${VER}TekxitPiServer
-sed -i 's/Xmx4G/Xmx${MEM}/g' ServerLinux.sh
-sed -i 's/Xms4G/Xms${MEM}/g' ServerLinux.sh
+
+sed -i "s/-Xmx[0-9]\+[A-Za-z]/-Xmx$MEM/" ServerLinux.sh
+sed -i "s/-Xms[0-9]\+[A-Za-z]/-Xms$MEM/" ServerLinux.sh
+echo "Version used: $VER"
+echo "Memory set: $MEM"
+cat ServerLinux.sh
+
 chmod +x ServerLinux.sh
 ./ServerLinux.sh
