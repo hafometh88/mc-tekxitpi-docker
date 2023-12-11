@@ -1,20 +1,24 @@
 #!/bin/bash
 
-cd /minecraft
-FILE="${VER}TekxitPiServer.zip"
+cd /minecraft/tekxit
+FILE="vercheck/${VER}"
 if [ -f "$FILE" ]; then
     echo "The file '$FILE' is present."
 else
+    rm -r vercheck
+    cd /minecraft
     wget https://www.tekxit.lol/downloads/tekxit3.14/${VER}TekxitPiServer.zip
     unzip ./${VER}TekxitPiServer.zip
+    cd ${VER}TekxitPiServer
+    mkdir vercheck && touch vercheck/${VER}
+    mv -f * /minecraft/tekxit/
 fi
-cd ${VER}TekxitPiServer
 
+cd /minecraft/tekxit
 sed -i "s/-Xmx[0-9]\+[A-Za-z]/-Xmx$MEM/" ServerLinux.sh
 sed -i "s/-Xms[0-9]\+[A-Za-z]/-Xms$MEM/" ServerLinux.sh
-echo "Version used: $VER"
-echo "Memory set: $MEM"
+echo "$VER"
+echo "$MEM"
 cat ServerLinux.sh
 
 chmod +x ServerLinux.sh
-./ServerLinux.sh
