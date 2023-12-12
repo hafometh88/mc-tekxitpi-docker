@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd /minecraft/tekxit
 FILE="vercheck/${VER}"
 if [ -f "$FILE" ]; then
@@ -10,13 +12,12 @@ else
     cd ${VER}TekxitPiServer
     mkdir vercheck && touch vercheck/${VER}
     mv -f * /minecraft/tekxit/
+    rm -r ${VER}TekxitPiServer.zip
 fi
 
 cd /minecraft/tekxit
 sed -i "s/-Xmx[0-9]\+[A-Za-z]/-Xmx$MEM/" ServerLinux.sh
 sed -i "s/-Xms[0-9]\+[A-Za-z]/-Xms$MEM/" ServerLinux.sh
-echo "$VER"
-echo "$MEM"
-cat ServerLinux.sh
 
 chmod +x ServerLinux.sh
+./ServerLinux.sh
