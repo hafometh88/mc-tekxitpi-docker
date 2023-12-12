@@ -1,5 +1,3 @@
-#!/bin/bash
-
 cd /minecraft/tekxit
 FILE="vercheck/${VER}"
 if [ -f "$FILE" ]; then
