@@ -4,8 +4,8 @@
 
 Modify docker-compose.yml variables to suit your needs
 
-* VER=*1.0.961* - specifies version of tekxit server (found on [https://tekxit.lol/](https://tekxit.lol/))
-* MEM=4G - specifies how much RAM is allocated to the server (eg.4G) 
+* VER=1.0.961 - specifies version of tekxit server (found on [https://tekxit.lol/](https://tekxit.lol/))
+* MEM=4G - specifies how much RAM is allocated to the server (minimum 4G is recommended)
 
 ```
 ---
@@ -19,9 +19,6 @@ services:
     ports:
       - 25565:25565
     volumes:
-      - "minecraft_data:/minecraft"
+      - "./minecraft:/minecraft/tekxit"
     restart: unless-stopped
-
-volumes:
-  minecraft_data:
 ```

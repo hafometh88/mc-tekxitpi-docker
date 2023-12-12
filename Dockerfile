@@ -7,9 +7,9 @@ RUN apt-get update && \
     apt-get install -y unzip && \
     apt-get install -y wget
 
-COPY start.sh /minecraft/
-RUN chmod +x /minecraft/start.sh
+COPY launch.sh /minecraft/
+RUN chmod +x /minecraft/launch.sh
 
 EXPOSE 25565
 
-CMD /minecraft/start.sh
+CMD /minecraft/launch.sh
