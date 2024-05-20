@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-slim
 
-ENV VER="1.0.961"
+ENV VER="1.0.980"
 ENV MEM="4G"
 
 RUN apt-get update && \
