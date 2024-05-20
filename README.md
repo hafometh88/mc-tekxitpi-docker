@@ -1,6 +1,6 @@
-# mc-tekxit-docker - Tekxit 3.14 modpack in Docker
+# mc-tekxitpi-docker - Tekxit 3.14 modpack in Docker
 
-***You need to have Docker and Docker Compose installed***
+***You need to have [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/linux/) installed***
 
 Modify docker-compose.yml variables to suit your needs
 
