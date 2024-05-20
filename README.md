@@ -4,7 +4,7 @@
 
 Modify docker-compose.yml variables to suit your needs
 
-* VER=1.0.961 - specifies version of tekxit server (found on [https://tekxit.lol/](https://tekxit.lol/))
+* VER=1.0.980 - specifies version of tekxit server (found on [https://tekxit.lol/](https://tekxit.lol/))
 * MEM=4G - specifies how much RAM is allocated to the server (minimum 4G is recommended)
 
 ```
@@ -14,7 +14,7 @@ services:
   tekxit:
     image: ghcr.io/hafometh88/mc-tekxit-docker:latest
     environment:
-      - VER=1.0.961
+      - VER=1.0.980
       - MEM=4G
     ports:
       - 25565:25565
