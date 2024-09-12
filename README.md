@@ -12,7 +12,7 @@ Modify docker-compose.yml variables to suit your needs
 version: '3'
 services:
   tekxit:
-    image: ghcr.io/hafometh88/mc-tekxit-docker:latest
+    image: ghcr.io/hafometh88/mc-tekxitpi-docker:latest
     environment:
       - VER=1.0.980
       - MEM=4G
