@@ -1,11 +1,12 @@
----
 name: Publish Docker
 
 on:
   push:
+    branches:
+      - main
 
 env:
-  IMAGE_TAG: ghcr.io/${{ github.repository_owner }}/mc-tekxit-docker:latest
+  IMAGE_TAG: ghcr.io/${{ github.repository_owner }}/mc-tekxitpi-docker:latest
 
 jobs:
   build:
@@ -20,9 +21,9 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build Image
-        run: docker build . -t mc-tekxit-docker
+        run: docker build . -t mc-tekxitpi-docker
       - name: Save Image
-        run: docker save mc-tekxit-docker | gzip > image.tar.gz
+        run: docker save mc-tekxitpi-docker | gzip > image.tar.gz
       - uses: actions/upload-artifact@v2
         with:
           name: image
@@ -35,7 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Login to GHCR
         uses: docker/login-action@v1
@@ -49,6 +49,6 @@ jobs:
       - name: Load Image
         run: docker load < image.tar.gz
       - name: Tag Image
-        run: docker tag mc-tekxit-docker "$IMAGE_TAG"
+        run: docker tag mc-tekxitpi-docker "$IMAGE_TAG"
       - name: Push Image
         run: docker push "$IMAGE_TAG"
