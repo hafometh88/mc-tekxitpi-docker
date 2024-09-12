@@ -24,7 +24,7 @@ jobs:
         run: docker build . -t mc-tekxitpi-docker
       - name: Save Image
         run: docker save mc-tekxitpi-docker | gzip > image.tar.gz
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: image
           path: image.tar.gz
@@ -43,7 +43,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4  # Updated to v4
         with:
           name: image
       - name: Load Image
