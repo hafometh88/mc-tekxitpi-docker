@@ -32,7 +32,7 @@ services:
     ports:
       - 25565:25565
     volumes:
-      - "./minecraft:/minecraft/tekxit"
+      - "./minecraft:/minecraft"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "25565"]
