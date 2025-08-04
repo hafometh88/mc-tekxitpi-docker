@@ -14,7 +14,7 @@ get_latest_version() {
 
     if [ -z "$latest_ver" ]; then
         log "Warning: Could not fetch latest version from website, using fallback version."
-        latest_ver="1.0.980"  # FALLBACK_VERSION: Update this when new versions are released
+        latest_ver="1.0.980"  # FALLBACK_VERSION
     fi
 
     echo "$latest_ver"
@@ -84,20 +84,4 @@ sed -i "s/-Xms[0-9]\+[A-Za-z]/-Xms${MEM}/" ServerLinux.sh
 log "Starting server..."
 chmod +x ServerLinux.sh
 
-mkfifo /tmp/minecraft_stdin
-cat /tmp/minecraft_stdin | ./ServerLinux.sh &
-SERVER_PID=$!
-
-graceful_shutdown() {
-    log "Caught stop signal, sending 'stop' to Minecraft server..."
-    if ps -p $SERVER_PID > /dev/null; then
-        echo "stop" > /tmp/minecraft_stdin
-        wait $SERVER_PID
-    fi
-    log "Server stopped gracefully."
-    exit 0
-}
-
-trap graceful_shutdown SIGTERM SIGINT
-
-wait $SERVER_PID
+./ServerLinux.sh
